@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim AS builder
+FROM debian:bookworm-slim@sha256:7e490910eea2861b9664577a96b54ce68ea3e02ce7f51d89cb0103a6f9c386e0 AS builder
 
 ARG RR_TAG="v2.3"
 
@@ -32,7 +32,7 @@ RUN cmake --preset ninja-release
 RUN cmake --build --preset ninja-release
 
 # --------------
-FROM debian:bookworm-slim AS assets
+FROM debian:bookworm-slim@sha256:7e490910eea2861b9664577a96b54ce68ea3e02ce7f51d89cb0103a6f9c386e0 AS assets
 
 ARG RR_TAG="v2.3"
 ARG ASSETS_URL="https://github.com/KartKrewDev/RingRacers/releases/download/${RR_TAG}/Dr.Robotnik.s-Ring-Racers-${RR_TAG}-Assets.zip"
@@ -49,7 +49,7 @@ RUN unzip "Dr.Robotnik.s-Ring-Racers-${RR_TAG}-Assets.zip"
 
 # --------------
 
-FROM debian:bookworm-slim AS main
+FROM debian:bookworm-slim@sha256:7e490910eea2861b9664577a96b54ce68ea3e02ce7f51d89cb0103a6f9c386e0 AS main
 
 ARG RR_PORT="5029"
 ARG RR_TAG="v2.3"
